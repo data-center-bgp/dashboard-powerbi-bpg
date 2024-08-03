@@ -11,47 +11,47 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('shipyard_dashboards', function (Blueprint $table) {
-            $table->text('title');
-            $table->text('link');
-            $table->boolean('finance');
-        });
+        // Schema::table('shipyard_dashboards', function (Blueprint $table) {
+        //     $table->text('title');
+        //     $table->text('link');
+        //     $table->boolean('finance');
+        // });
 
-        Schema::table('shorebase_dashboards', function (Blueprint $table) {
-            $table->text('title');
-            $table->text('link');
-            $table->boolean('finance');
-        });
+        // Schema::table('shorebase_dashboards', function (Blueprint $table) {
+        //     $table->text('title');
+        //     $table->text('link');
+        //     $table->boolean('finance');
+        // });
 
-        Schema::table('supply_chain_dashboards', function (Blueprint $table) {
-            $table->text('title');
-            $table->text('link');
-            $table->boolean('finance');
-        });
+        // Schema::table('supply_chain_dashboards', function (Blueprint $table) {
+        //     $table->text('title');
+        //     $table->text('link');
+        //     $table->boolean('finance');
+        // });
 
-        Schema::table('fuel_retail_dashboards', function (Blueprint $table) {
-            $table->text('title');
-            $table->text('link');
-            $table->boolean('finance');
-        });
+        // Schema::table('fuel_retail_dashboards', function (Blueprint $table) {
+        //     $table->text('title');
+        //     $table->text('link');
+        //     $table->boolean('finance');
+        // });
 
-        Schema::table('tank_storage_terminal_dashboards', function (Blueprint $table) {
-            $table->text('title');
-            $table->text('link');
-            $table->boolean('finance');
-        });
+        // Schema::table('tank_storage_terminal_dashboards', function (Blueprint $table) {
+        //     $table->text('title');
+        //     $table->text('link');
+        //     $table->boolean('finance');
+        // });
 
-        Schema::table('agro_dashboards', function (Blueprint $table) {
-            $table->text('title');
-            $table->text('link');
-            $table->boolean('finance');
-        });
+        // Schema::table('agro_dashboards', function (Blueprint $table) {
+        //     $table->text('title');
+        //     $table->text('link');
+        //     $table->boolean('finance');
+        // });
 
-        Schema::table('gas_dashboards', function (Blueprint $table) {
-            $table->text('title');
-            $table->text('link');
-            $table->boolean('finance');
-        });
+        // Schema::table('gas_dashboards', function (Blueprint $table) {
+        //     $table->text('title');
+        //     $table->text('link');
+        //     $table->boolean('finance');
+        // });
     }
 
     /**
@@ -59,32 +59,32 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('shipyard_dashboards', function (Blueprint $table) {
-            $table->dropColumn(['title', 'link', 'finance']);
-        });
+        // Schema::table('shipyard_dashboards', function (Blueprint $table) {
+        //     $table->dropColumn(['title', 'link', 'finance']);
+        // });
 
-        Schema::table('shorebase_dashboards', function (Blueprint $table) {
-            $table->dropColumn(['title', 'link', 'finance']);
-        });
+        // Schema::table('shorebase_dashboards', function (Blueprint $table) {
+        //     $table->dropColumn(['title', 'link', 'finance']);
+        // });
 
-        Schema::table('supply_chain_dashboards', function (Blueprint $table) {
-            $table->dropColumn(['title', 'link', 'finance']);
-        });
+        // Schema::table('supply_chain_dashboards', function (Blueprint $table) {
+        //     $table->dropColumn(['title', 'link', 'finance']);
+        // });
 
-        Schema::table('fuel_retail_dashboards', function (Blueprint $table) {
-            $table->dropColumn(['title', 'link', 'finance']);
-        });
+        // Schema::table('fuel_retail_dashboards', function (Blueprint $table) {
+        //     $table->dropColumn(['title', 'link', 'finance']);
+        // });
 
-        Schema::table('tank_storage_terminal_dashboards', function (Blueprint $table) {
-            $table->dropColumn(['title', 'link', 'finance']);
-        });
+        // Schema::table('tank_storage_terminal_dashboards', function (Blueprint $table) {
+        //     $table->dropColumn(['title', 'link', 'finance']);
+        // });
 
-        Schema::table('agro_dashboards', function (Blueprint $table) {
-            $table->dropColumn(['title', 'link', 'finance']);
-        });
+        // Schema::table('agro_dashboards', function (Blueprint $table) {
+        //     $table->dropColumn(['title', 'link', 'finance']);
+        // });
 
-        Schema::table('gas_dashboards', function (Blueprint $table) {
-            $table->dropColumn(['title', 'link', 'finance']);
-        });
+        // Schema::table('gas_dashboards', function (Blueprint $table) {
+        //     $table->dropColumn(['title', 'link', 'finance']);
+        // });
     }
 };
