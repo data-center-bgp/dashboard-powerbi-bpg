@@ -61,6 +61,7 @@ class ShorebaseDashboardResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->emptyStateHeading('No data yet')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -82,5 +83,15 @@ class ShorebaseDashboardResource extends Resource
             'create' => Pages\CreateShorebaseDashboard::route('/create'),
             'edit' => Pages\EditShorebaseDashboard::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Shorebase';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Shorebase Dashboard';
     }
 }

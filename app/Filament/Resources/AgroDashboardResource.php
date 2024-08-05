@@ -58,6 +58,7 @@ class AgroDashboardResource extends Resource
             ->filters([
                 //
             ])
+            ->emptyStateHeading('No data yet')
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
@@ -82,5 +83,15 @@ class AgroDashboardResource extends Resource
             'create' => Pages\CreateAgroDashboard::route('/create'),
             'edit' => Pages\EditAgroDashboard::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Agro';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Agro Dashboard';
     }
 }

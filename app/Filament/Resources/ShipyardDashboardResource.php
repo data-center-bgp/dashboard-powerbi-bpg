@@ -61,6 +61,7 @@ class ShipyardDashboardResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->emptyStateHeading('No data yet')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -82,5 +83,15 @@ class ShipyardDashboardResource extends Resource
             'create' => Pages\CreateShipyardDashboard::route('/create'),
             'edit' => Pages\EditShipyardDashboard::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Shipyard';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Shipyard Dashboard';
     }
 }

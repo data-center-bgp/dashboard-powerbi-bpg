@@ -61,6 +61,7 @@ class SupplyChainDashboardResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->emptyStateHeading('No data yet')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -82,5 +83,15 @@ class SupplyChainDashboardResource extends Resource
             'create' => Pages\CreateSupplyChainDashboard::route('/create'),
             'edit' => Pages\EditSupplyChainDashboard::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Supply Chain';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Supply Chain Dashboard';
     }
 }

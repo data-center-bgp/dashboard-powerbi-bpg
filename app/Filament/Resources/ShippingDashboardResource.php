@@ -59,6 +59,7 @@ class ShippingDashboardResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->emptyStateHeading('No data yet')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -80,5 +81,15 @@ class ShippingDashboardResource extends Resource
             'create' => Pages\CreateShippingDashboard::route('/create'),
             'edit' => Pages\EditShippingDashboard::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Shipping';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Shipping Dashboard';
     }
 }

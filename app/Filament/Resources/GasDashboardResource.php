@@ -61,6 +61,7 @@ class GasDashboardResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->emptyStateHeading('No data yet')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -82,5 +83,15 @@ class GasDashboardResource extends Resource
             'create' => Pages\CreateGasDashboard::route('/create'),
             'edit' => Pages\EditGasDashboard::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Gas';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Gas Dashboard';
     }
 }

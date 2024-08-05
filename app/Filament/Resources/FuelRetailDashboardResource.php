@@ -61,6 +61,7 @@ class FuelRetailDashboardResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->emptyStateHeading('No data yet')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -82,5 +83,15 @@ class FuelRetailDashboardResource extends Resource
             'create' => Pages\CreateFuelRetailDashboard::route('/create'),
             'edit' => Pages\EditFuelRetailDashboard::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Fuel Retail';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Fuel Retail Dashboard';
     }
 }

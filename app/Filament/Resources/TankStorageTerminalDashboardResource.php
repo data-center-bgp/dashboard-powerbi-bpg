@@ -61,6 +61,7 @@ class TankStorageTerminalDashboardResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->emptyStateHeading('No data yet')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -82,5 +83,15 @@ class TankStorageTerminalDashboardResource extends Resource
             'create' => Pages\CreateTankStorageTerminalDashboard::route('/create'),
             'edit' => Pages\EditTankStorageTerminalDashboard::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Tank Storage Terminal';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Tank Storage Terminal Dashboard';
     }
 }
