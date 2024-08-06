@@ -21,20 +21,9 @@ class ShorebaseDashboardResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Textarea::make('title')
-                    ->required()
-                    ->columnSpanFull(),
+                    ->required(),
                 Forms\Components\Textarea::make('link')
-                    ->required()
-                    ->columnSpanFull(),
-                Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('link')
-                    ->icon('heroicon-o-link')
-                    ->color('primary')
-                    ->url(fn ($record) => $record->link)
-                    ->openUrlInNewTab()
-                    ->formatStateUsing(fn ($state) => 'Click Me!')
-                    ->wrap(),
+                    ->required(),
                 Forms\Components\Toggle::make('finance')
                     ->required(),
             ]);
@@ -52,6 +41,15 @@ class ShorebaseDashboardResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('link')
+                    ->icon('heroicon-o-link')
+                    ->color('primary')
+                    ->url(fn ($record) => $record->link)
+                    ->openUrlInNewTab()
+                    ->formatStateUsing(fn ($state) => 'Click Me!')
+                    ->wrap(),
                 Tables\Columns\IconColumn::make('finance')
                     ->boolean(),
             ])
