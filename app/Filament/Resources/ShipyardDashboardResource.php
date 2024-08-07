@@ -85,13 +85,18 @@ class ShipyardDashboardResource extends Resource
         /** @var \App\Models\User $user */
         $user = Auth::user();
 
-        if ($user->hasRole('finance_shipyard')) {
-            $query->where('finance', true);
-        } elseif ($user->hasRole('operation_shipyard')) {
-            $query->where('finance', false);
+        if ($user->hasRole('super_admin')) {
+            return $query;
         }
 
-        return $query;
+        return $query->where(function (Builder $subQuery) use ($user) {
+            if ($user->hasRole('finance_shipyard')) {
+                $subQuery->orWhere('finance', true);
+            }
+            if ($user->hasRole('operation_shipyard')) {
+                $subQuery->orWhere('finance', false);
+            }
+        });
     }
 
     public static function getPages(): array

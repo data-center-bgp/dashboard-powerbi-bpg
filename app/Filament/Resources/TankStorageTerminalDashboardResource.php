@@ -85,13 +85,18 @@ class TankStorageTerminalDashboardResource extends Resource
         /** @var \App\Models\User $user */
         $user = Auth::user();
 
-        if ($user->hasRole('finance_tank_storage_terminal')) {
-            $query->where('finance', true);
-        } elseif ($user->hasRole('operation_tank_storage_terminal')) {
-            $query->where('finance', false);
+        if ($user->hasRole('super_admin')) {
+            return $query;
         }
 
-        return $query;
+        return $query->where(function (Builder $subQuery) use ($user) {
+            if ($user->hasRole('finance_tank_storage_terminal')) {
+                $subQuery->orWhere('finance', true);
+            }
+            if ($user->hasRole('operation_tank_storage_terminal')) {
+                $subQuery->orWhere('finance', false);
+            }
+        });
     }
 
     public static function getPages(): array
