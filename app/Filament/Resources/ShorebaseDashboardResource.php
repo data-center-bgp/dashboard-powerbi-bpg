@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class ShorebaseDashboardResource extends Resource
 {
@@ -72,6 +74,22 @@ class ShorebaseDashboardResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if ($user->hasRole('finance_shipping')) {
+            $query->where('finance', true);
+        } elseif ($user->hasRole('operation_shipping')) {
+            $query->where('finance', false);
+        }
+
+        return $query;
     }
 
     public static function getPages(): array

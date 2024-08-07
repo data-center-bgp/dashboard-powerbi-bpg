@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class TankStorageTerminalDashboardResource extends Resource
 {
@@ -74,6 +76,22 @@ class TankStorageTerminalDashboardResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if ($user->hasRole('finance_tank_storage_terminal')) {
+            $query->where('finance', true);
+        } elseif ($user->hasRole('operation_tank_storage_terminal')) {
+            $query->where('finance', false);
+        }
+
+        return $query;
     }
 
     public static function getPages(): array

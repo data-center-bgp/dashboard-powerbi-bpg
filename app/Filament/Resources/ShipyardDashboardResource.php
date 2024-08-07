@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class ShipyardDashboardResource extends Resource
 {
@@ -74,6 +76,22 @@ class ShipyardDashboardResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if ($user->hasRole('finance_shipyard')) {
+            $query->where('finance', true);
+        } elseif ($user->hasRole('operation_shipyard')) {
+            $query->where('finance', false);
+        }
+
+        return $query;
     }
 
     public static function getPages(): array

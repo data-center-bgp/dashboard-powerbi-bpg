@@ -10,6 +10,9 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    /**
+     * @method bool hasRole($roles, $guard = null)
+     */
     use HasFactory, HasRoles, Notifiable;
 
     /**
